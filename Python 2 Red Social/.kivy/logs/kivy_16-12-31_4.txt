@@ -1,0 +1,8 @@
+[INFO              ] Logger: Record log in /mnt/sdcard/kivy/entretenimiento/.kivy/logs/kivy_16-12-31_4.txt
+[INFO              ] Kivy: v1.9.1
+[INFO              ] Python: v2.7.2 (default, Mar 20 2016, 23:30:13) 
+[GCC 4.8]
+[WARNING           ] stderr: Traceback (most recent call last):
+[WARNING           ] stderr:   File "main.py", line 5, in <module>
+[WARNING           ] stderr:     from kivy.garden.mapview import MapView, MapMarker, MarkerMapLayer, MapSource
+[WARNING           ] stderr: ImportError: No module named mapview

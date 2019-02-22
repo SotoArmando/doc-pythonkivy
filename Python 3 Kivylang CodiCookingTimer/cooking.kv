@@ -1,0 +1,473 @@
+#:kivy 1.9.1
+#:import Animation kivy.animation.Animation
+#:import Window kivy.core.window.Window
+#:import RoundedRectangle kivy.graphics.vertex_instructions.RoundedRectangle
+#:import Clock kivy.clock.Clock
+
+<NavigationDrawer>:
+    size_hint: (1,1)
+    _side_panel: sidepanel
+    _main_panel: mainpanel
+    _join_image: joinimage
+    side_panel_width: min(0.75*self.width, 0.75*self.width)
+    BoxLayout:
+        id: sidepanel
+        y: root.y
+        x: root.x - (1-root._anim_progress) * root.side_panel_init_offset * root.side_panel_width
+        height: root.height
+        width: root.side_panel_width
+        opacity: root.side_panel_opacity + (1-root.side_panel_opacity)*root._anim_progress
+        canvas:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        canvas.after:
+            Color:
+                rgba: (1,1,1,(1-root._anim_progress)*root.side_panel_darkness)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    BoxLayout:
+        id: mainpanel
+        x: root.x + root._anim_progress * root.side_panel_width * root.main_panel_final_offset
+        y: root.y
+        size: root.size
+        canvas:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        canvas.after:
+            Color:
+                rgba: (1,1,1,root._anim_progress*root.main_panel_darkness)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    Image:
+        id: joinimage
+        opacity: min(sidepanel.opacity, 0 if root._anim_progress < 0.00001 else min(root._anim_progress*40,1))
+        source: app.asset + "R.png"
+        mipmap: False
+        width: dp(10)
+        
+        height: root._side_panel.height
+        x: (mainpanel.x - self.width + dp(10)) if root._main_above else (sidepanel.x + sidepanel.width - dp(10))
+        y: root.y
+        allow_stretch: True
+        keep_ratio: False
+
+<Button>:
+    markup: True
+    background_normal: app.asset + "Rectangle 213.png"
+    background_down: app.asset + "Rectangle 213.png"
+
+<Label>:
+    font_name: app.font + "Roboto-Medium.ttf"
+
+<TextInput>:
+    hint_text_color: 1,1,1,.54
+    
+<MaterialButton>:
+    size_hint: 1,1
+    size: Window.width, self.parent.height
+    pos: self.parent.pos
+    background_normal: 'test.png'
+    background_down: 'test.png'
+    canvas.after:
+        Color: 
+            rgba: .90,.90,.90,self.coloropacity
+        Rectangle:
+            size:self.size
+            pos:self.pos
+        Color: 
+            rgba: .70,.70,.70,self.coloropacity
+        Ellipse:
+            size: 1*self.canvasformscale,1*self.canvasformscale
+            pos:self.gotpos[0] - (1*self.canvasformscale)/2, self.gotpos[1] - (1*self.canvasformscale)/2
+            
+
+
+<Alert>:
+    size_hint_y: None
+    height: dp(64)
+    y: dp(-1)
+    opacity: 0
+    showme: (Animation(y =  dp(55),opacity = 1, d = .5, t ='out_quart')  +Animation(x = 0, d = 1, t ='out_quart')  + Animation(y = 0, opacity = 0, d= .5 , t ='out_quart'))
+    message: "Nueva Receta!\n[size=12dp]Pan Dulze"
+    typecolor: {"Success": [0.35294117647058826, 0.8627450980392157, 0.5607843137254902, 1.0], "Error": [0.9568627450980393, 0.20784313725490197, 0.2784313725490196,1], "Warning": [1.0, 0.7450980392156863, 0.23921568627450981, 1], "Info": [0.23921568627450981, 0.7254901960784313, 0.9019607843137255, 1]}
+    typeimage: {"Success": "Success.png", "Error": 'Error.png', "Warning": 'Alert.png', "Info": 'Info.png'}
+    type: "Info"
+    RelativeLayout:
+        size_hint_x: None
+        width: dp(300) 
+        size_hint_y: None
+        height: dp(64)
+        pos_hint: {'center_x':.5}
+        canvas:
+            Color:
+                rgba: root.typecolor[root.type]
+            Rectangle:
+                size: self.size
+                pos: 0,0
+    
+        Image:
+            opacity: .84
+            size_hint_x: None
+            width: dp(64)
+            x: 10
+            stretch: False
+            keep_ratio: True
+            source: app.asset + root.typeimage[root.type]
+            
+                
+            
+        Label:
+            opacity: .84
+            size_hint_x: None
+            width: dp(300-64-10)
+            text_size: dp(300-64-18), dp(64)
+            halign: 'left'
+            valign: 'middle'
+            x: dp(64+10)
+            markup: True
+            font_size: dp(2) +  dp(14)
+            text:root.message
+            
+<SideMenu>:
+    canvas:
+        Color:
+            rgba: .96,.96,.96,1
+        Rectangle:
+            texture: app.Gradient.vertical((1,1,1,1),(.99,.99,.99,1)) 
+            size: self.size
+            pos: 0,0
+    BoxLayout:
+        orientation:'vertical'
+        padding: 0,0,0,0
+
+
+        Label:
+            size_hint: .70,.5
+            opacity: .64
+            pos_hint: {'center_x':.5,'center_y':.27}
+            text: "[b][color=#000000]Armando Jose Soto Melo\n[/size][size=13dp]Codi estaba cocinando.com"
+            text_size: self.size
+            font_name: app.font + "Roboto-Regular.ttf"
+            halign: 'center'
+            line_height: 1
+            markup: True
+            font_size: dp(2) + dp(2) +  dp(15)
+
+        Label:
+            markup: True
+            text: "dev.armando29@gmail.com"
+            font_name: app.font + "Roboto-Medium.ttf"
+            font_size: dp(14)
+            size_hint_y: None
+            height: dp(24)
+            canvas.before:
+                Color:
+                    rgba:0.1171875, 0.5937500000000002, 1.0, 1.0
+                Rectangle:
+                    size: self.size
+                    pos:self.pos
+        BoxLayout:
+            orientation:'vertical'
+            spacing: dp(1)
+            opacity: .84
+            
+            RelativeLayout:
+                size_hint_y: None
+                height: dp(64)
+                canvas:
+                    Color:
+                        rgba: 1,1,1,1
+                    Rectangle: 
+                        size: self.size
+                        
+                StencilView:
+                    size_hint_y: None
+                    height: dp(64)
+                    MaterialButton:
+                        on_release: Clock.schedule_once(lambda a: setattr(app, 'currentscreen', 'First'), 0.25);Clock.schedule_once(lambda a: app.checkreaded(),.25)
+
+                GridLayout:
+                    size_hint_y: None
+                    height: dp(64)
+                    rows: 1
+                    spacing: dp(0)
+                    padding: 0, dp(8),0,0
+
+                    Image:
+                        size_hint_x: None
+                        width: dp(64)
+                        source: app.asset +"home.png"
+                        keep_ratio: True
+                        allow_stretch: False
+                        
+                    GridLayout:
+                        cols:1
+                        Label:
+                            text: "[color=#000000]Inicio\n[size=12dp][color=#000000]Toca para ir a inicio"
+                            markup: True
+                            font_name: app.font + "Roboto-Medium.ttf"
+                            text_size: self.size
+                            valign: 'middle'
+                            halign: 'left'
+                            font_size: dp(2+2) +  dp(12)
+
+
+
+            
+            RelativeLayout:
+                size_hint_y: None
+                height: dp(64)
+                canvas:
+                    Color:
+                        rgba: 1,1,1,1
+                    Rectangle: 
+                        size: self.size
+                        
+                StencilView:
+                    size_hint_y: None
+                    height: dp(64)
+                    MaterialButton:
+                        on_release: Clock.schedule_once(lambda a: setattr(app, 'currentscreen', 'MyRecipes'), 0.25);Clock.schedule_once(lambda a: app.checkreaded(),.25);Clock.schedule_once(lambda a: app.showcreaterecipebutton(),.25)
+                GridLayout:
+
+                    rows: 1
+                    spacing: dp(0)
+                    padding: 0, dp(8),0,0
+
+                    Image:
+                        size_hint_x: None
+                        width: dp(64)
+                        source: app.asset +"cooking-recipes.png"
+                        keep_ratio: True
+                        allow_stretch: False
+                    GridLayout:
+                        cols:1
+                        Label:
+                            text: "[color=#000000]Recetas\n[size=12dp][color=#000000]Toca para abrir Recetas"
+                            markup: True
+                            font_name: app.font + "Roboto-Medium.ttf"
+                            text_size: self.size
+                            valign: 'middle'
+                            halign: 'left'
+                            font_size: dp(2+2) +  dp(12)
+
+
+
+                    
+            RelativeLayout:
+                size_hint_y: None
+                height: dp(64)
+                canvas:
+                    Color:
+                        rgba: 1,1,1,1
+                    Rectangle: 
+                        size: self.size
+                        
+                        
+                StencilView:
+                    size_hint_y: None
+                    height: dp(64)
+                    MaterialButton:
+                        on_release: Clock.schedule_once(lambda a: setattr(app, 'currentscreen', 'Policy'), 0.25);Clock.schedule_once(lambda a: app.checkreaded(),.25);Clock.schedule_once(lambda a: app.showcreaterecipebutton(),.25)
+                        
+                GridLayout:
+                    rows: 1
+                    spacing: dp(0)
+                    padding: 0, dp(8),0,0
+
+                    Image:
+                        size_hint_x: None
+                        width: dp(64)
+                        source: app.asset +"baseline-face-24px.png"
+                        keep_ratio: True
+                        allow_stretch: False
+
+                    GridLayout:
+                        cols:1
+                        Label:
+                            text: "[color=#000000]Politicas de Privacidad\n[size=12dp][color=#000000]Toca para abrir Politicas de Privacidad"
+                            markup: True
+                            font_name: app.font + "Roboto-Medium.ttf"
+                            text_size: self.size
+                            valign: 'middle'
+                            halign: 'left'
+                            font_size: dp(2+2) +  dp(12)
+
+
+            RelativeLayout:
+                size_hint_y: None
+                height: dp(64)
+                canvas:
+                    Color:
+                        rgba: 1,1,1,1
+                    Rectangle: 
+                        size: self.size
+                        
+                StencilView:
+                    size_hint_y: None
+                    height: dp(64)
+                    MaterialButton:
+                        on_release: Clock.schedule_once(lambda a: setattr(app, 'currentscreen', 'Policy'), 0.25);Clock.schedule_once(lambda a: app.checkreaded(),.25);Clock.schedule_once(lambda a: app.showcreaterecipebutton(),.25)
+                        
+                GridLayout:
+                    rows: 1
+                    spacing: dp(0)
+                    padding: 0, dp(8),0,0
+
+                    Image:
+                        size_hint_x: None
+                        width: dp(64)
+                        source: app.asset +"baseline-code-24px.png"
+                        keep_ratio: True
+                        allow_stretch: False
+
+                    GridLayout:
+                        cols:1
+                        Label:
+                            text: "[color=#000000]Build Version\n[size=12dp][color=#000000]1.0.12"
+                            markup: True
+                            font_name: app.font + "Roboto-Medium.ttf"
+                            text_size: self.size
+                            valign: 'middle'
+                            halign: 'left'
+                            font_size: dp(2+2) +  dp(12)
+
+            RelativeLayout:
+                size_hint_y: None
+                height: dp(64)
+                canvas:
+                    Color:
+                        rgba: 1,1,1,1
+                    Rectangle: 
+                        size: self.size
+                        
+                        
+                StencilView:
+                    size_hint_y: None
+                    height: dp(64)
+                    MaterialButton:
+                        on_release: Clock.schedule_once(lambda a: setattr(app, 'currentscreen', 'Login'), 0.25);Clock.schedule_once(lambda a: app.switchtoread(),.25);Clock.schedule_once(lambda a: app.showcreaterecipebutton(),.25)
+                        
+                GridLayout:
+                    rows: 1
+                    spacing: dp(0)
+                    padding: dp(0), dp(8),0,0
+
+                    Image:
+                        size_hint_x: None
+                        width: dp(64)
+                        source: app.asset +"exit.png"
+                        keep_ratio: True
+                        allow_stretch: False
+
+
+
+                    GridLayout:
+                        cols:1
+                        Label:
+                            text: "[color=#000000]Iniciar Sesion\n[size=12dp][color=#000000]Toca para cerrar sesion"
+                            markup: True
+                            font_name: app.font + "Roboto-Medium.ttf"
+                            text_size: self.size
+                            valign: 'middle'
+                            halign: 'left'
+                            font_size: dp(2+2) +  dp(12)
+
+            Widget:
+                canvas:
+                    Color:
+                        rgba: 1,1,1,1
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                        
+
+
+BoxLayout:
+    orientation: "vertical"
+    NavigationDrawer:
+        id:Navigator
+        SideMenu:
+            
+
+        RelativeLayout:
+            ScreenManager:
+                id: sm
+              
+                on_current_screen:
+					app.checkstatesOnCurrent()
+					if Navigator.state == 'open': Navigator.toggle_state()
+
+                Recipe:
+                    name: "Open Recipe"
+            
+
+
+            RelativeLayout:
+                size_hint_y: None
+                height: dp(58)
+                y: Window.height - dp(58)
+                
+                canvas:
+                    Color:
+                        rgba:app.icmenubackcolor
+                    Rectangle:
+                        size:self.size
+
+                    Color:
+                        rgba: 1,1,1,app.icmenubackcolor[3]   
+                    Rectangle:
+                        size: self.width, dp(6)
+                        source: app.asset+"D.png"
+                        pos: 0 , dp(-6)
+
+                    
+                GridLayout:
+                    rows:1 
+                    padding: dp(6),dp(4),dp(6),0
+                    spacing: 0,dp(4)
+                    opacity: .84
+                    RelativeLayout:
+                        size_hint_x: None
+                        width: dp(48)
+                        canvas:
+                            Color: 
+                                rgba: app.icmenucolor
+                            Rectangle:
+                                source: app.asset+"ic_menu_48px.png"
+                                size: dp(48), dp(48)
+                            
+                        Button:
+                            opacity:0
+                            on_release: Navigator.toggle_state()
+
+                    Label:
+                        text: ""
+                        font_name: app.font + "Roboto-Medium.ttf"
+                        font_size: dp(18)
+                        text_size: self.width-dp(12), self.height- dp(16)
+                        halign: "left"
+                        valign: "bottom"
+                        
+                    RelativeLayout:
+                        size_hint_x: None
+                        width: dp(48)
+                        canvas:
+                            Color: 
+                                rgba: app.icmenucolor
+                            Rectangle:
+                                source: app.asset+"photo-camerab.png"
+                                size: dp(32), dp(26)
+                                pos:  dp(24-16), dp(24-13)
+                        Button:
+                            opacity: 0 
+                            on_release: app.take_picture()
+

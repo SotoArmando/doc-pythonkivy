@@ -1,0 +1,2 @@
+title=apkauthor=Kivy team
+orientation=portrait

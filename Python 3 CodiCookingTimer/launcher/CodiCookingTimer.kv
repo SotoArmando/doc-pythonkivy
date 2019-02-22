@@ -1,0 +1,20 @@
+#:import Animation kivy.animation
+
+<FirstScreen@RelativeLayout>:
+
+    GridLayout:
+        cols: 1
+        Button:
+            text: 'hola'
+            on_release: Animation.Animation(pos_hint = {'y':0}, d = .5, t = 'out_quart').start(downboard) if downboard.pos_hint['y'] == -1 else Animation.Animation(pos_hint = {'y':-1}, d = .5, t = 'out_quart').start(downboard)
+            
+    RelativeLayout:
+        id: downboard
+        pos_hint: {'y':-1}
+        GridLayout:
+            cols: 1
+            Button:
+                text: 'hola'
+                on_release: Animation.Animation(pos_hint = {'y':0}, d = .5, t = 'out_quart').start(downboard) if downboard.pos_hint['y'] == -1 else Animation.Animation(pos_hint = {'y':-1}, d = .5, t = 'out_quart').start(downboard)
+
+            

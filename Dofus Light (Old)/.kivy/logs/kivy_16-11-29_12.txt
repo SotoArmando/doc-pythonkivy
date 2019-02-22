@@ -1,0 +1,22 @@
+[INFO              ] Logger: Record log in /mnt/sdcard/kivy/new/.kivy/logs/kivy_16-11-29_12.txt
+[INFO              ] Kivy: v1.9.1
+[INFO              ] Python: v2.7.2 (default, Mar 20 2016, 23:30:13) 
+[GCC 4.8]
+[INFO              ] Factory: 179 symbols loaded
+[WARNING           ] stderr: /data/data/org.kivy.pygame/files/lib/python2.7/site-packages/kivy/core/image/img_pygame.py:13: RuntimeWarning: import cdrom: No module named cdrom
+[WARNING           ] stderr: (ImportError: No module named cdrom)
+[INFO              ] Image: Providers: img_tex, img_dds, img_gif, img_pygame, img_pil (img_ffpyplayer ignored)
+[INFO              ] Window: Provider: pygame
+[INFO              ] GL: OpenGL version <OpenGL ES 2.0 build 1.12@2701748>
+[INFO              ] GL: OpenGL vendor <Imagination Technologies>
+[INFO              ] GL: OpenGL renderer <PowerVR SGX 540>
+[INFO              ] GL: OpenGL parsed version: 2, 0
+[INFO              ] GL: Texture max size <2048>
+[INFO              ] GL: Texture max units <8>
+[INFO              ] Support: Android install hooks
+[INFO              ] Window: virtual keyboard not allowed, single mode, not docked
+[INFO              ] Text: Provider: pygame
+[ERROR             ] Image: Error reading file navigationdrawer_gradient_rtol.png
+[ERROR             ] Image: Error reading file navigationdrawer_gradient_rtol.png
+[INFO              ] Loader: using a thread pool of 2 workers
+[INFO              ] GL: NPOT texture support is available

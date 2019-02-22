@@ -1,0 +1,81 @@
+
+<RecipeListItem>:
+    size_hint_y: None
+    height: dp(91)
+    canvas:
+        Color:
+            rgba: 1,1,1,1
+        Rectangle:
+            size: self.size
+    StencilView:
+        size_hint_y: None
+        height: dp(91)
+
+        MaterialButton:
+            on_release:  Clock.schedule_once(lambda a: setattr(app, 'currentscreen', "Open Recipe"), 0.5) ;Clock.schedule_once(lambda a: app.switchtoread(),.5);Clock.schedule_once(lambda a: app.scrolleonennd(),.5); setattr(app, 'cookwithrecipebuttoncontrol',0)
+            
+    GridLayout:
+        rows: 1
+        padding: dp(64),dp(8),0,0
+
+
+        GridLayout:
+            cols:1
+            padding: dp(8),0,0,0
+            Label:
+                text: "[color=#000000]Arroz con Zanahoria\nCarne - Almendras - Tocinetta"
+                markup: True
+                font_name: app.font + "Roboto-Medium.ttf"
+                text_size: self.size
+                valign: 'bottom'
+                halign: 'left'
+                font_size: dp(2+2) +  dp(12)
+
+            Label:
+                opacity:.54
+                text: "[size=12dp][color=#000000]Colombia - 5 Estrellas"
+                markup: True
+                font_name: app.font + "Roboto-Medium.ttf"
+                text_size: self.size
+                valign: 'middle'
+                size_hint_y: 1
+                height: dp(2+2) +  dp(12)
+                font_size: dp(2+2) +  dp(12)
+                
+Screen:
+    ScrollView: 
+        GridLayout:
+            cols:1
+            padding: 0,dp(52+16),0,0
+            spacing: dp(1)
+            size_hint_y: None
+            height: dp(1000)
+            canvas:
+                Color:
+                    rgba: .9,.9,.9,1
+                Rectangle: 
+                    size: self.width, self.height*2
+                    pos: 0 , 0
+                    texture: app.Gradient.horizontal((1,1,1, 1),(1,1,1,1))
+
+                
+            RecipeListItem:
+            RecipeListItem:
+            RecipeListItem:
+            RecipeListItem:
+            RecipeListItem:
+    Button:
+        size_hint: None,None
+        size: dp(64)*app.recipelistcreatecontrol,dp(64)*app.recipelistcreatecontrol
+        pos_hint: {'center_x':.5, 'center_y':.1}
+        background_normal: app.asset + "Rectangle 213.png"
+        background_down: app.asset + "Rectangle 213.png"
+        text: "+"
+        font_size: dp(24)
+        on_release: setattr(Mainscreenmanager,"current","New Recipe"); app.checkreaded();
+        canvas.before:
+            Color: 
+                rgba: 0.1171875, 0.5937500000000002, 1.0, 1.0
+            Ellipse:
+                size: self.size
+                pos: self.pos

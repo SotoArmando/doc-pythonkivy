@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+
+    {% block extrastatic %}
+    {% endblock %}
+    
+    <link rel='stylesheet' href="{% static 'css/bootstrap.min.css' %}">
+    <tile>{% block title %} Document {% endblock %}</tile>
+</head> 
+<body>
+{% block header %}
+<h4>Este es el bloque del header base</h4>
+
+</ul>
+{% endblock %}
+
+{% block content %}
+<h4>Este es el contenido del archivo base</h4>
+{% endblock %}
+
+{% block footer %}
+<h5>Soy el footer del base</h5> 
+{% endblock%}
+
+{% block extrajs %}
+{% endblock %}
+</body>
+</html>

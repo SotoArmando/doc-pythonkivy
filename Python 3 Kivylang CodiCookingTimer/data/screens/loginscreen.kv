@@ -1,0 +1,173 @@
+                
+Screen:
+    canvas:
+        Color:
+            rgba: 1,1,1,1
+        Rectangle:
+            size: self.size
+            texture: app.Gradient.vertical((1,1,1,1),(.99,.99,.99,1)) 
+        Color: 
+            rgba: 1,1,1,1
+        Rectangle:
+            size: self.size
+            texture: app.Gradient.horizontal((0.2913385826771654, 0.671118458259016, 1.0, 1.0),(0.1171875, 0.5937500000000002, 1.0, 1.0))
+    RelativeLayout:
+        GridLayout:
+            cols: 1
+            spacing: dp(12)
+            padding: 0, dp(32),0 ,0
+            size_hint_x: None
+            width: dp(300)
+            pos_hint: {'center_x':.5, 'center_y':.5}
+            Image:
+                size_hint_x: 1
+                width:dp(66)
+                source: app.asset +"chef.png"
+                size_hint_y: None
+                height: dp(66)
+            Label:
+                markup: True
+                text: "[color=#ffffff]Busca y crea tus recetas a tu comodidad y perfeccion :)"
+                size_hint_y: None
+                font_size:    dp(18)
+                text_size: self.size[0]-dp(8), self.size[1]
+                height:dp(17*5)
+                canvas.before:
+                    Color:
+                        rgba: .3,.3,.3,0
+                    Rectangle:
+                        size: self.size
+                        pos:self.pos
+            RelativeLayout:
+                size_hint_y: None
+                height:dp(32+8)
+                canvas:
+
+                    Color:
+                        rgba: 1,1,1,.54
+                    Rectangle:
+                        size: dp(300), dp(2)
+                        
+                TextInput:
+                    id: Serialized_UCrendential_Temp
+                    hint_text: "User"
+                    text:"BoyAdministrador"
+                    font_name: app.font + "Roboto-Medium.ttf"
+                    padding: dp(4),dp(15-8),0,0
+                    font_size:  dp(18)
+                    foreground_color: 1,1,1,1
+                    background_active: app.asset + "Rectangle 213.png"
+                    background_normal: app.asset + "Rectangle 213.png"
+            RelativeLayout:
+                size_hint_y: None
+                height:dp(32+8)
+                canvas:
+
+                    Color:
+                        rgba: 1,1,1,.54
+                    Rectangle:
+                        size: dp(300), dp(2)
+                        
+                TextInput:
+                    id: Serialized_PCrendential_Temp
+                    hint_text: "Password"
+                    text: "123456"
+                    font_name: app.font + "Roboto-Medium.ttf"
+                    foreground_color: 1,1,1,1
+                    password: True
+                    padding: dp(4),dp(15-8),0,0
+                    font_size:  dp(18)
+                    background_active: app.asset + "Rectangle 213.png"
+                    background_normal: app.asset + "Rectangle 213.png"
+                
+   
+            RelativeLayout:
+                size_hint_y: None
+                height: dp(32)
+                GridLayout:
+                    rows:1
+                    padding: 0,0,0,0                        
+                    Label:
+                        id: thelabel
+                        size_hint_x: 1
+                        width: dp(150)
+                       
+                        markup: True
+                        switch: lambda :Animation(color = [1.0, 0.396078431372549, 0.396078431372549, 1.0], d = .25, t = 'out_expo' ).start(self) if self.switched else Animation(color = [0.2980392156862745, 1.0, 0.4745098039215686, 1.0], d = .25, t = 'out_expo' ).start(self)
+                        color: 1.0, 0.396078431372549, 0.396078431372549, 1.0
+                        switched: False
+                        canvas.before:
+                            Color:
+                                rgba:self.color
+                            Rectangle:
+                                size: self.size
+                                pos:self.pos
+                    
+                    Widget:
+                GridLayout:
+                    rows:1
+                    padding: 0,0,0,0    
+                    Button:
+                        opacity:1
+                        background_normal: app.asset+ "Rectangle 213.png"
+                        background_down: app.asset+ "Rectangle 213.png"
+                        text:"Keep Session [Off]"
+                        on_release: 
+                            thelabel.switch(); 
+                            setattr(thelabel,'switched',False) if thelabel.switched else setattr(thelabel,'switched',True)
+                            setattr(self,'text',"Keep Session [On]") if thelabel.switched else setattr(self,'text',"Keep Session [Off]")
+                            
+                    Widget:
+                    
+                        
+
+            RelativeLayout:
+                StencilView:
+                    size_hint_y: None
+                    height: dp(54)
+                    MaterialButton:
+                        on_release: app.login(root) 
+                Label:
+                    size_hint_y: None
+                    height: dp(54)
+                    text: "Sign up"
+                    font_size: dp(18)
+                    font_type: app.font + "Roboto-Medium.ttf"
+                    
+            RelativeLayout:
+                StencilView:
+                    size_hint_y: None
+                    height: dp(54)
+                    MaterialButton:
+                        on_release: Clock.schedule_once(lambda a: setattr(root.parent, 'current', 'NewAccount'), 0.25) 
+                Label:
+                    size_hint_y: None
+                    height: dp(54)
+                    text: "Sign in"
+                    font_size: dp(18)
+                    font_type: app.font + "Roboto-Medium.ttf"
+
+                
+
+            RelativeLayout:
+                canvas:
+                    Color:
+                        rgba: 0.9372549019607843, 1.0, 0.4980392156862745, 1.0
+                    Rectangle:
+                        size: self.size
+                Button:
+                    size_hint_y: 1
+                    height: dp(54)
+                    text: "[color=#000000]Olvidaste tu clave?[b]\nRecuperala!"
+                    markup: True
+                    background_down: app.asset + "Rectangle 213.png"
+                    background_normal: app.asset + "Rectangle 213.png"
+                    on_release: self._animation.start(self)
+                    _animation: Animation(_scale = .95, d= .20 , t= 'out_quart') + Animation(_scale = 1, d= .30 , t= 'out_quart')
+                    _scale: 1
+                    canvas.before:
+                        Color:
+                            rgba: .3,.3,1,0
+                        Rectangle:
+                            size: self.size[0]*self._scale,self.size[1]*self._scale
+                            pos: self.size[0]/2 - (self.size[0]*self._scale/2) + self.pos[0], self.size[1]/2 - (self.size[1]*self._scale/2) + self.pos[1]

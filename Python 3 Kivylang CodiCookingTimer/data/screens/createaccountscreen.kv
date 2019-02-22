@@ -1,0 +1,272 @@
+Screen:
+    ScrollView:
+        RelativeLayout:
+            size_hint_y: None
+            height: dp(872)
+            canvas:
+                Color: 
+                    rgba: 1,1,1,1
+                Rectangle:
+                    size: self.size
+                    texture: app.Gradient.horizontal((0.2913385826771654, 0.671118458259016, 1.0, 1.0),(0.1171875, 0.5937500000000002, 1.0, 1.0))
+                Color: 
+                    rgba: 0.1171875, 0.5937500000000002, 1.0, 1.0
+                Rectangle:
+                    size: self.size
+                    pos: 0, self.height
+                Color: 
+                    rgba: 0.2913385826771654, 0.671118458259016, 1.0, 1.0
+                Rectangle:
+                    size: self.size
+                    pos: 0, -self.height
+                
+                
+            GridLayout:
+                cols: 1
+                spacing: 0,dp(16)
+                scroll_x:.5
+                padding: 0, dp(52),0 ,0
+
+                size_hint_x: None
+                width: dp(300)
+                pos_hint: {'center_x':.5}
+                Label:
+                    text: "[color=#ffffff][b]Sign Up"
+                    size_hint_y: None
+                    height: dp(24)
+                    font_size: dp(24)
+                    markup: True
+                Label:
+                    text: "[color=#ffffff]Nos Complace tener a alguien mas entre nosotros, y te damos la iniciativa para unirte solo debes rellenar los campos a continuacion. bienvenido :)"
+                    size_hint_y: None
+                    height: dp(16*5)
+                    halign: 'center'
+                    valign: 'middle'
+                    markup: True
+                    text_size: dp(320), self.size[1]
+                
+                Label:
+                    text: "[color=#ffffff][b]Credenciales de usuario"
+                    size_hint_y: None
+                    height: dp(16)
+                    markup: True
+                RelativeLayout:
+                    
+                    height:dp(32+8)
+                    font_size: dp(17)
+                    size_hint_y: None
+                    canvas:
+                        Color:
+                            rgba: .9,.9,.9,0
+                        Rectangle:
+                            size: self.size
+                            
+                    TextInput:
+                        id: Serialized_UCrendential
+                        hint_text: "Usuario"
+                        padding: dp(4),dp(15-8),0,0
+                        font_size: dp(17)
+                        foreground_color: 1,1,1,.84
+                        background_active: app.asset + "Rectangle 213.png"
+                        background_normal: app.asset + "Rectangle 213.png"
+                        canvas.after:
+                            Color:
+                                rgba: 1,1,1,.54
+                            Rectangle:
+                                size: self.width, dp(2)
+                RelativeLayout:
+                    height:dp(32+8)
+                    font_size: dp(17)
+                    size_hint_y: None
+                    canvas:
+                        Color:
+                            rgba: .9,.9,.9,0
+                        Rectangle:
+                            size: self.size
+                    TextInput: 
+                        id: Serialized_Mail
+                        hint_text: "Correo"
+                        foreground_color: 1,1,1,.84
+                        padding: dp(4),dp(15-8),0,0
+                        font_size: dp(17)
+                        background_active: app.asset + "Rectangle 213.png"
+                        background_normal: app.asset + "Rectangle 213.png"
+                        canvas.after:
+                            Color:
+                                rgba: 1,1,1,.54
+                            Rectangle:
+                                size: self.width, dp(2)
+                        
+                
+                Label:
+                    text: "[color=#ffffff][b]Perfil"
+                    size_hint_y: None
+                    height: dp(16)
+                    markup: True
+                    
+                RelativeLayout:
+                    height:dp(32+8)
+                    font_size: dp(17)
+                    size_hint_y: None
+                    canvas:
+                        Color:
+                            rgba: .9,.9,.9,0
+                        Rectangle:
+                            size: self.size
+                    TextInput: 
+                        id: Serialized_Name
+                        hint_text: "Nombres"
+                        foreground_color: 1,1,1,.84
+                        padding: dp(4),dp(15-8),0,0
+                        size_hint_y: None
+                        font_size: dp(17)
+                        height:dp(32+8)
+                        background_active: app.asset + "Rectangle 213.png"
+                        background_normal: app.asset + "Rectangle 213.png"
+                        canvas.after:
+                            Color:
+                                rgba: 1,1,1,.54
+                            Rectangle:
+                                size: self.width, dp(2)
+                RelativeLayout:
+                    height:dp(32+8)
+                    font_size: dp(17)
+                    size_hint_y: None
+                    canvas:
+                        Color:
+                            rgba: .9,.9,.9,0
+                        Rectangle:
+                            size: self.size
+                    TextInput: 
+                        id: Serialized_LastName
+                        hint_text: "Apellidos"
+                        foreground_color: 1,1,1,.84
+                        padding: dp(4),dp(15-8),0,0
+                        size_hint_y: None
+                        font_size: dp(17)
+                        height:dp(32+8)
+                        background_active: app.asset + "Rectangle 213.png"
+                        background_normal: app.asset + "Rectangle 213.png"
+                        canvas.after:
+                            Color:
+                                rgba: 1,1,1,.54
+                            Rectangle:
+                                size: self.width, dp(2)
+                RelativeLayout:
+                    height:dp(32+8)
+                    font_size: dp(17)
+                    size_hint_y: None
+                    canvas:
+                        Color:
+                            rgba: .9,.9,.9,0
+                        Rectangle:
+                            size: self.size
+                    TextInput:
+                        id: Serialized_DetailFlag0
+                        hint_text: "Cocinas como?"
+                        foreground_color: 1,1,1,.84
+                        padding: dp(4),dp(15-8),0,0
+                        size_hint_y: None
+                        font_size: dp(17)
+                        height:dp(32+8)
+                        background_active: app.asset + "Rectangle 213.png"
+                        background_normal: app.asset + "Rectangle 213.png"
+                        canvas.after:
+                            Color:
+                                rgba: 1,1,1,.54
+                            Rectangle:
+                                size: self.width, dp(2)
+                Label:
+                    text: "[color=#ffffff][b]Credencial Llave"
+                    foreground_color: 1,1,1,.84
+                    size_hint_y: None
+                    height: dp(16)
+                    markup: True
+                RelativeLayout:
+                    height:dp(32+8)
+                    font_size: dp(17)
+                    size_hint_y: None
+                    canvas:
+                        Color:
+                            rgba: .9,.9,.9,0
+                        Rectangle:
+                            size: self.size
+                    TextInput:
+                        hint_text: "Contrasena"
+                        foreground_color: 1,1,1,.84
+                        padding: dp(4),dp(15-8),0,0
+                        size_hint_y: None
+                        font_size: dp(17)
+                        height:dp(32+8)
+                        background_active: app.asset + "Rectangle 213.png"
+                        background_normal: app.asset + "Rectangle 213.png"
+                        canvas.after:
+                            Color:
+                                rgba: 1,1,1,.54
+                            Rectangle:
+                                size: self.width, dp(2)
+                RelativeLayout:
+                    height:dp(32+8)
+                    font_size: dp(17)
+                    size_hint_y: None
+                    canvas:
+                        Color:
+                            rgba: .9,.9,.9,0
+                        Rectangle:
+                            size: self.size
+                    TextInput:
+                        id: Serialized_PCrendential
+                        hint_text: "Confirmar Contrasena"
+                        foreground_color: 1,1,1,.84
+                        
+                        padding: dp(4),dp(15-8),0,0
+                        size_hint_y: None
+                        font_size: dp(17)
+                        height:dp(32+8)
+                        background_active: app.asset + "Rectangle 213.png"
+                        background_normal: app.asset + "Rectangle 213.png"
+                        canvas.after:
+                            Color:
+                                rgba: 1,1,1,.54
+                            Rectangle:
+                                size: self.width, dp(2)
+                RelativeLayout:
+                    size_hint_y: None
+                    height: dp(54*2) + dp(8)
+                    GridLayout: 
+                        cols: 1
+                        spacing: 0, dp(8)
+                        
+                        RelativeLayout:
+                            size_hint_y: None
+                            height: dp(54)
+                            StencilView:
+                                size_hint_y: None
+                                height: dp(54)
+                                MaterialButton:
+                                    _User:  {'UCrendential': Serialized_UCrendential.text,'PCrendential': Serialized_PCrendential.text,'Mail': Serialized_Mail.text,'IsActive': "True",'DateCreated': "Today" }
+                                    on_release: Clock.schedule_once(lambda x: setattr(root.parent, 'current', 'Login'),.2)
+                                    on_release: Clock.schedule_once(lambda x: app.UserIndex.Create(row = self._User),.4); Clock.schedule_once(lambda x: app.UserIndex.SubmitChanges() ,.5)
+                                 
+                            Label:
+                                size_hint_y: None
+                                height: dp(54)
+                                text: "Confirm and Send"
+                                font_size: dp(18)
+                                font_type: app.font + "Roboto-Medium.ttf"
+                        RelativeLayout:
+                            size_hint_y: None
+                            height: dp(54)
+                            StencilView:
+                                size_hint_y: None
+                                height: dp(54)
+                                MaterialButton:
+                                    on_release: Clock.schedule_once(lambda x: setattr(root.parent, 'current', 'Login'),.2)
+                                 
+                            Label:
+                                size_hint_y: None
+                                height: dp(54)
+                                text: "Get Back"
+                                font_size: dp(18)
+                                font_type: app.font + "Roboto-Medium.ttf"
+                        

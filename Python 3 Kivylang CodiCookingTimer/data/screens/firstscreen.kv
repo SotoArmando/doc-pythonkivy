@@ -1,0 +1,461 @@
+<Opcion>:
+    size_hint_x: None
+    width: dp(8)
+    opacity: .54
+    canvas:
+        Color:
+            rgba: 0.1171875, 0.5937500000000002, 1.0, 1.0
+        Ellipse:
+            size: self.width*self.scale, self.height*self.scale
+            pos: self.width/2 - (self.width*self.scale)/2, self.height/2 - (self.height*self.scale)/2
+
+<CompWidget>:
+    size_hint_x: None
+    size_hint_y: None
+    height: dp(8)
+    pos_hint: {'center_x':.5}
+    rows: 1
+    spacing: dp(8),0
+    
+
+Screen:
+    canvas:
+        Color:
+            rgba: 1,1,1,1
+        Rectangle:
+            size: self.size
+            texture: app.Gradient.vertical((1,1,1,1),(.95,.95,.95,1)) 
+    
+    GridLayout:
+        padding: [0,dp(24+64+16+8),0,0]
+        cols: 1
+        spacing: dp(16)
+        
+
+                
+        Button:
+            background_normal: app.asset + "Rectangle 213.png"
+            background_down: app.asset + "Rectangle 213.png"
+            background_disabled_normal: app.asset + "Rectangle 213.png"
+            id: biglabeltimer   
+            text: '[color=#000000]00:00:00'
+            font_size:   dp(75)
+            
+            markup: True
+            size_hint: 1, None
+            height: dp(75)
+            opacity: .1
+            on_release:  
+                Animation(opacity = 1 , d = .5, t = 'out_quart').start(keyboardlayout) 
+                Animation(opacity = 1 , d = .5, t = 'out_quart').start(typingstate) 
+                
+                if keyboardlayout.opacity < .5: keyboardlayout.disabled = False; recipereadinglayout.disabled = True;Animation(opacity = 0 , d = .5 , t ='out_quart').start(recipereadinglayout); Animation(size_hint_y = 0, d = .1).start(recipereadinglayout)
+                if keyboardlayout.opacity > .5: keyboardlayout.disabled = True; recipereadinglayout.disabled = False;Animation(opacity = 1 , d = .5 , t ='out_quart').start(recipereadinglayout); Animation(size_hint_y = 1, d = .1).start(recipereadinglayout)
+                
+                if ((keyboardlayout.opacity < .5) and (app.smallstate == True)): keyboardlayout.disabled = False; Animation(y = -Window.height*.9, d = .5, t = 'out_quart').start(downboard)
+                if ((keyboardlayout.opacity > .5) and (app.smallstate == True)): keyboardlayout.disabled = True; Animation(y = -Window.height*.9 + dp(64), d = .5, t = 'out_quart').start(downboard)
+
+        
+        Label:
+            id: smalllabeltimer
+            opacity: 1
+            text: '[color=#1E97FF]0 Horas 0 Minutos y 0 Segundos'
+            font_size:   dp(16.0)
+            markup: True
+            font_name: app.font + "Roboto-Medium.ttf"
+            size_hint_y: None
+            height: dp(16.0)
+        GridLayout:
+            rows: 1
+            size_hint_y: None
+            height: dp(16)
+            
+            spacing: [dp(24),0]
+
+            Widget:
+                size_hint_x: 1
+            Button:
+                size_hint_x: None
+                width: dp(64)
+                height: dp(16)
+                _size: (dp(64),dp(32))
+                text: '[color=#000000]Comenzar'
+                _source: app.asset+'hud15.png'
+                on_release: app.start(label = biglabeltimer, label1 = smalllabeltimer)
+                on_release:
+                    x = Animation(opacity = 0 , d = .25, t = 'out_quart' )
+                    x.bind(on_complete = lambda x,y: setattr(smalllabeltimer, 'text', "[color=#1E97FF]"+app._format1()))
+                    (x + Animation(opacity = 1 , d = .25, t = 'out_quart')).start(smalllabeltimer)
+            
+                on_release: Animation(opacity = 0 , d = .5, t = 'out_quart').start(keyboardlayout) if keyboardlayout.opacity == 1 else Animation(opacity = 1 , d = .5, t = 'out_quart').start(keyboardlayout)
+                on_release: Animation(opacity = 0 , d = .5, t = 'out_quart').start(typingstate) 
+                on_release:  
+                    if keyboardlayout.opacity < .5: keyboardlayout.disabled = False; recipereadinglayout.disabled = True;Animation(opacity = 0 , d = .5 , t ='out_quart').start(recipereadinglayout); setattr(recipereadinglayout,'size_hint_y',0)
+                    if keyboardlayout.opacity > .5: keyboardlayout.disabled = True; recipereadinglayout.disabled = False;Animation(opacity = 1 , d = .5 , t ='out_quart').start(recipereadinglayout); setattr(recipereadinglayout,'size_hint_y',1)
+                        
+                    if ((keyboardlayout.opacity < .5) and (app.smallstate == True)): keyboardlayout.disabled = False; Animation(y = -Window.height*.9, d = .5, t = 'out_quart').start(downboard)
+                    if ((keyboardlayout.opacity > .5) and (app.smallstate == True)): keyboardlayout.disabled = True; Animation(y = -Window.height*.9 + dp(64), d = .5, t = 'out_quart').start(downboard)
+                    
+            
+            Button:
+                size_hint_x: None
+                width: dp(64)
+                height: dp(16)
+                _size: (dp(64),dp(32))
+                text: '[color=#000000]Reiniciar'
+                _source: app.asset+'hud14.png'
+                on_release: app.repeat()
+                
+            Button:
+                size_hint_x: None
+                width: dp(64)
+                height: dp(16)
+                _size: (dp(64),dp(32))
+                text: '[color=#000000]Cancelar'
+                _source: app.asset+'hud16.png'
+                on_release: app.stoptimer(biglabeltimer,smalllabeltimer)
+                
+            Widget:
+                size_hint_x: 1
+            
+        
+        Widget:
+            size_hint_y: 1
+
+
+    GridLayout:
+        opacity: 1
+        cols: 1
+        spacing: dp(12)
+        padding: [0,dp(24+38),0,0]
+        RelativeLayout:
+            size_hint_y: None
+            height: dp(64)
+            
+            canvas: 
+                Color:
+                    rgba: 1,0,0,0
+                Rectangle:
+                    size: self.size
+            GridLayout:
+                padding: [dp(50),0,dp(20),0]
+                rows: 1
+                size_hint: (1,None)
+                height: dp(50)
+                pos_hint: {'center_y':.5}
+                spacing: dp(2),0
+                
+                canvas:
+                    Color:
+                        rgba: 1,1,1,1
+
+                Widget:
+                    size_hint_x: 1
+                    
+                Button:
+                    id: typingstate
+                    size_hint: (None,None)
+                    size: (dp(50),dp(50))
+                    _size: (dp(50),dp(50))  
+                    _source: app.asset+'typing.png'
+
+                    on_release: Clock.schedule_once(lambda x:Animation(opacity = 1 , d = .5, t = 'out_quart').start(keyboardlayout),.5) if keyboardlayout.opacity == 0 else Animation(opacity = 0 , d = .5, t = 'out_quart').start(keyboardlayout)
+                    on_release: Animation(opacity = 0 , d = .5, t = 'out_quart').start(self) 
+                    on_release:  
+                        if keyboardlayout.opacity < .5: keyboardlayout.disabled = False; recipereadinglayout.disabled = True;Animation(opacity = 0 , d = .5 , t ='out_quart').start(recipereadinglayout); Clock.schedule_once(lambda x: Animation(size_hint_y = 0, d = .5, t = 'out_expo').start(recipereadinglayout),.5)
+                        
+                        if keyboardlayout.opacity > .5: keyboardlayout.disabled = True; recipereadinglayout.disabled = False;Animation(opacity = 1 , d = .5 , t ='out_quart').start(recipereadinglayout); Clock.schedule_once(lambda x: Animation(size_hint_y = 1, d = .5, t = 'out_expo').start(recipereadinglayout),.5)
+                        
+                        if ((keyboardlayout.opacity < .5) and (app.smallstate == True)): keyboardlayout.disabled = False; Animation(y = -Window.height*.9, d = .5, t = 'out_quart').start(downboard)
+                        if ((keyboardlayout.opacity > .5) and (app.smallstate == True)): keyboardlayout.disabled = True; Animation(y = -Window.height*.9 + dp(64), d = .5, t = 'out_quart').start(downboard)
+                        
+                                       
+                    
+                Button:
+                    id: lockedstate99
+                    size_hint: (None,None)
+                    size: (dp(50),dp(50))
+                    _size: (dp(50),dp(50))
+                    _source: app.asset+'lock0.png'
+
+      
+                    on_disabled: #print(self.disabled)
+                    on_release: 
+                        setattr(self, '_source',app.asset+'lock1.png') if self._source == app.asset+'lock0.png' else setattr(self, '_source',app.asset+'lock0.png')
+        BoxLayout:
+            size_hint_y: None
+            height:dp(64+22+12+4)
+
+
+        RelativeLayout:
+            
+
+            GridLayout:
+
+                id: keyboardlayout 
+                pos_hint: {'center_x':.5}
+                size_hint_x: None
+                width: dp(248)
+                spacing: [dp(28),dp(4)]
+                padding: 0, dp(8),0,0
+
+                cols: 3
+                opacity: 0
+                
+                Button:
+                    size_hint: (1,None)
+                    size: (dp(64),dp(64))
+                    font_size: dp(2) + dp(2) + dp(22)
+                    text: "[color=#000000][b]1"
+                    size_hint_x: None
+                    markup: True
+                    _size: (dp(64),dp(64))
+                    on_release: app.write(key = "1"); biglabeltimer.text = '[color=#000000]'+ app._format()
+
+                Button:
+                    size_hint: (1,None)
+                    size: (dp(64),dp(64))
+                    _size: (dp(64),dp(64))
+                    font_size: dp(2) + dp(2) + dp(22)
+                    size_hint_x: None
+                    text: "[color=#000000][b]2"
+                    on_release: app.write(key = "2"); biglabeltimer.text = '[color=#000000]'+ app._format()
+                    
+                    
+                Button:
+                    size_hint: (1,None)
+                    size: (dp(64),dp(64))
+                    _size: (dp(64),dp(64))
+                    font_size: dp(2) + dp(2) + dp(22)
+                    text: "[color=#000000][b]3"
+                    size_hint_x: None
+                    on_release: app.write(key = "3"); biglabeltimer.text = '[color=#000000]'+ app._format()
+                    
+                Button:
+                    size_hint: (1,None)
+                    size: (dp(64),dp(64))
+                    _size: (dp(64),dp(64))
+                    font_size: dp(2) + dp(2) + dp(22)
+                    text: "[color=#000000][b]4"
+                    size_hint_x: None
+                    on_release: app.write(key = "4"); biglabeltimer.text = '[color=#000000]'+ app._format()
+                    
+                Button:
+                    size_hint: (1,None)
+                    size: (dp(64),dp(64))
+                    _size: (dp(64),dp(64))
+                    font_size: dp(2) + dp(2) + dp(22)
+                    text: "[color=#000000][b]5"
+                    size_hint_x: None
+                    on_release: app.write(key = "5"); biglabeltimer.text = '[color=#000000]'+ app._format()
+                    
+                Button:
+                    size_hint: (1,None)
+                    size: (dp(64),dp(64))
+                    _size: (dp(64),dp(64))
+                    font_size: dp(2) + dp(2) + dp(22)
+                    text: "[color=#000000][b]6"
+                    size_hint_x: None
+                    on_release: app.write(key = "6"); biglabeltimer.text = '[color=#000000]'+ app._format()
+                    
+                Button:
+                    size_hint: (1,None)
+                    size: (dp(64),dp(64))
+                    _size: (dp(64),dp(64))
+                    font_size: dp(2) + dp(2) + dp(22)
+                    text: "[color=#000000][b]7"
+                    size_hint_x: None
+                    on_release: app.write(key = "7"); biglabeltimer.text = '[color=#000000]'+ app._format()
+                  
+                Button:
+                    size_hint: (1,None)
+                    size: (dp(64),dp(64))
+                    _size: (dp(64),dp(64))
+                    font_size: dp(2) + dp(2) + dp(22)
+                    text: "[color=#000000][b]8"
+                    size_hint_x: None
+                    on_release: app.write(key = "8"); biglabeltimer.text = '[color=#000000]'+ app._format()
+                    
+                Button:
+                    size_hint: (1,None)
+                    size: (dp(64),dp(64))
+                    _size: (dp(64),dp(64))
+                    font_size: dp(2) + dp(2) + dp(22)
+                    text: "[color=#000000][b]9"
+                    size_hint_x: None
+                    on_release: app.write(key = "9"); biglabeltimer.text = '[color=#000000]'+ app._format()
+                Button:
+                    size_hint: (1,None)
+                    size: (dp(64),dp(64))
+                    _size: (dp(64),dp(64))
+                    font_size: dp(2) + dp(2) + dp(22)
+                    text: "[color=#000000][b]C"
+                    size_hint_x: None
+                    on_release: app.write(key = "0"); biglabeltimer.text = '[color=#000000]'+ app._format()
+                Button:
+                    size_hint: (1,None)
+                    size: (dp(64),dp(64))
+                    _size: (dp(64),dp(64))
+                    font_size: dp(2) + dp(2) + dp(22)
+                    text: "[color=#000000][b]0"
+                    size_hint_x: None
+                    on_release: app.write(key = "0"); biglabeltimer.text = '[color=#000000]'+ app._format()
+                Button:
+                    size_hint: (1,None)
+                    size: (dp(64),dp(64))
+                    _size: (dp(64),dp(64))
+                    font_size: dp(2) + dp(2) + dp(22)
+                    text: "[color=#000000][b]OK"
+                    size_hint_x: None
+                    on_release: app.write(key = "0"); biglabeltimer.text = '[color=#000000]'+ app._format()
+    GridLayout:##LAYER 2
+        opacity: 1
+        cols: 1
+        spacing: dp(12)
+        padding: [0,dp(24+38),0,0]
+        size_hint_y: 1
+     
+        
+        BoxLayout:
+            size_hint_y: None
+            height:dp(64+22+12+4+64+12)
+
+
+        RelativeLayout:
+            GridLayout:
+                id: recipereadinglayout 
+                pos_hint: {'center_x':.5}
+                size_hint_x: 1
+               
+                spacing: [dp(24),dp(4)]
+                padding: 0, dp(4),0,0
+                disabled: False
+                cols: 1
+               
+                Carousel:
+                    id: TheCarousel
+                    size_hint_y: None
+                    height: dp(250)
+                    anim_move_duratio: .5
+                    anim_type: "out_quart"
+                    min_move: .05
+                    RelativeLayout:
+
+                        Image:
+                            size_hint_x: 1
+                            width:dp(66)
+                            source: app.asset +"chef.png"
+                            size_hint_y: None
+                            height: dp(66)
+                            pos_hint:{'center_x':.5 , 'center_y':.75}
+                        Label: 
+                            text: "\n[color=#000000]Arroz con Zanahoria"
+                            markup: True
+                            size_hint_y: None
+                            size_hint_x: None
+                            line_height: 1.5
+                            halign:'left'
+                            font_name: app.font + "Roboto-Medium.ttf" 
+                            
+                            size: self.texture_size[0]+dp(12),self.texture_size[1]+dp(8)
+                            text_size: None, None
+                            font_size: dp(16)
+                            pos_hint:{'center_x':.5 , 'center_y':.5}
+                    RelativeLayout:
+
+                        
+                        Label: 
+                            text: "\n[color=#000000]2 tazas de arroz blanco de grano largo\n2 cucharadas de aceite vegetal\n1 taza de zanahorias ralladas\nSal"
+                            markup: True
+                            size_hint_y: None
+                            size_hint_x: None
+                            line_height: 1.5
+                            halign:'left'
+                            font_name: app.font + "Roboto-Light.ttf" 
+                            
+                            size: self.texture_size[0]+dp(12),self.texture_size[1]+dp(8)
+                            text_size: None, None
+                            font_size: dp(16)
+                            pos_hint:{'center_x':.5 , 'center_y':.75}
+
+                    
+                    RelativeLayout:
+                       
+
+                        Label: 
+                            text: "[color=#000000]\n[font="+app.font+"Roboto-LightItalic.ttf"+"]Enjuague bien el arroz colocándolo en un colador y un chorro de agua fría sobre él.[/font]"
+                            markup: True
+                            line_height: 1.3
+                            size_hint_y: None
+                            size_hint_x: None 
+                            halign:'center'
+                            pos_hint:{'center_x':.5 , 'center_y':.75}
+                            font_name: app.font + "Roboto-Bold.ttf" 
+                            size: dp(250+12),self.texture_size[1]+dp(8)
+                            text_size: dp(250+12), None
+                            font_size: dp(16)
+    
+                    RelativeLayout:
+                        cols: 1
+
+                        Label: 
+                            text: "[color=#000000]\n[font="+app.font+"Roboto-LightItalic.ttf"+"]Coloque el arroz en una olla mediana a continuación, añadir el caldo, el aceite, las zanahorias y la sal.[/font]"
+                            markup: True
+                            line_height: 1.3
+                            size_hint_y: None
+                            size_hint_x: None 
+                            halign:'center'
+                            pos_hint:{'center_x':.5 , 'center_y':.75}
+                            font_name: app.font + "Roboto-Bold.ttf" 
+                            size: dp(250+12),self.texture_size[1]+dp(8)
+                            text_size: dp(250+12), None
+                            font_size: dp(16)
+
+                    RelativeLayout:
+                        cols: 1
+
+                        Label: 
+                            text: "[color=#000000]\n[font="+app.font+"Roboto-LightItalic.ttf"+"]Llevar a hervir a fuego alto. Revuelva una vez y cubra, reduzca a fuego lento y cocine por 20 minutos.[/font]"
+                            markup: True
+                            line_height: 1.3
+                            size_hint_y: None
+                            size_hint_x: None 
+                            halign:'center'
+                            pos_hint:{'center_x':.5 , 'center_y':.75}
+                            font_name: app.font + "Roboto-Bold.ttf" 
+                            size: dp(250+12),self.texture_size[1]+dp(8)
+                            text_size: dp(250+12), None
+                            font_size: dp(16)
+
+                    
+
+                    RelativeLayout:
+                        cols: 1
+
+                        Label: 
+                            text: "[color=#000000]\n[font="+app.font+"Roboto-LightItalic.ttf"+"]Retire la olla del fuego y dejar reposar durante 10 minutos. Edponjar el arroz con un tenedor y sirva inmediatamente.[/font]"
+                            markup: True
+                            line_height: 1.3
+                            size_hint_y: None
+                            size_hint_x: None 
+                            halign:'center'
+                            pos_hint:{'center_x':.5 , 'center_y':.75}
+                            font_name: app.font + "Roboto-Bold.ttf" 
+                            size: dp(250+12),self.texture_size[1]+dp(8)
+                            text_size: dp(250+12), None
+                            font_size: dp(16)
+
+                    
+
+                    
+                          
+                RelativeLayout:
+                    size_hint_y: None
+                    height: dp(16)
+
+                           
+                    CompWidget:
+                        n: len(TheCarousel.slides)
+                        cursor: TheCarousel.index
+                        y: dp(4)
+                Widget:

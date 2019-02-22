@@ -1,0 +1,21 @@
+        
+Screen:
+    ScrollView:
+        size_hint_y: 1
+        GridLayout:
+            size_hint_y: None
+            height: dp(1200)
+            cols: 1
+            padding: 0,dp(51),0,0
+            Label:
+                id: thepolicy
+                text: "[color=#000000]"+app.privacypolicy
+                markup: True
+                size_hint_y: None
+                valign: 'top'
+                halign: 'center'
+                text_size: Window.width-dp(32), dp(1000)
+                height: dp(1000)
+            Button:
+                text: "Volver"
+                on_release: setattr(root.parent, 'current', 'Login'); #print ("Hola")

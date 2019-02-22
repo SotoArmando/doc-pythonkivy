@@ -1,0 +1,3 @@
+title=DOFUSDOC
+author=Armando Jose Soto Melo
+orientation=portrait

@@ -1,0 +1,3 @@
+title=RED DE TIENDAS
+author=Armando Jose Soto Melo
+orientation=portrait

@@ -1,0 +1,29 @@
+1. sugerencias preventivas. (zona mapeada).
+2. alerta dentro horarios.(preventivas).
+-------------------------------------------
+1. Buscar Localizar calles y sitios
+3. reportar si la alerta fue respondida.
+4. Trazar rutas de alertas (LISTO) 
+5. Validar VIN
+6. Reportar Faltas, Delitos y Crimenes(CASI)
+7. Emitir Alarma
+8. Conectar con django(CASI)
+9. Ver Camaras Instaladas
+10. Comunicacion Mensajes, chat, voz, video(CASI)
+11. Enviar Videos , y fotos(CASI)
+11. Agregar divisiones de policias
+
+
+
+- Vandalismo
+- (Urto = Daño que se la hace un vehiculo)
+- (Robo de vehiculo)
+-  Robo
+Fiscalia : Quienes dirigen una investigacion. 
+
+Cuartel : Funcion preventiva.
+
+Si el echo no se captura en el acto la fiscalia necesita solicitar una orden de arresto. una orden entragada a la policia.
+
+- Crimenes de oportunidad(cuando un delicuenta se encuentra en las condiciones para cometer un crimen), 
+- Crimenes de blancos especificos:
