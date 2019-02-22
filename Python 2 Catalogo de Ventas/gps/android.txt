@@ -1,0 +1,3 @@
+title=GPS
+author=Armando Jose Soto Melo
+orientation=portrait

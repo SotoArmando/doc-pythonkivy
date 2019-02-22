@@ -1,0 +1,59 @@
+Julio.monitor == [809 - 481 - 0912]
+la definicion del limite de una secuencia, es similar a la correspondiente
+para una funcion de una variable real. Esto es si para cada valor 
+
+
+
+
+ejm:
+
+Dada la secuencia:
+	
+	S(n) = E(n, i = 1) 3/n[(i/n)^2 + 1]
+
+Calcular su limite cuando e tiende al infinito.
+
+	S(n) = E(n, i = 1) [(3i^2/n^2) + 3/n]
+	S(n) = E(n, i = 1) [3i^2/n^2] + E(n, i = 1) [3/n]
+	S(n) = [1/3 / n^2] * E(n, i = 1) [i^2]  + [3/n] * E(n, i = 1) 1 
+	S(n) = [1/3 / n^2] * [n(n+1)(2n+1) / 6] + 3
+	S(n) = [1/2] * [(n+1)(2n+1) / n^2] + 3
+	S(n) = [1/2] * [[n+1/n] * [2n+1/n^2]] + 3
+	S(n) = [1/2] * ()
+
+
+Area de una region plana
+
+Rectangulo		Triangulo			Trapecio
+Area = Base * Altura	Area = [Base * Altura] /2	Area =[(Base Mayor + Base Menor) * Altura] /2
+
+Circunferencia
+Area = Pi * Radio^2
+
+Estime la grafica bajo la funcion. F(x) = 16 - x^2 : desde x = 0, hasta x = 4
+usando 4 rectangulos de aproximacion y empleando en cada ccaso.
+
+A) los puntos extremos de la derecha.
+B) los puntos extremos de la izquierda.
+
+indique en cada caso, si el resultado es una sub estimacion
+o una sobreestimacion.
+
+x = 0; f(x) = 16	R = [16 - (1)^2] + 1*[16 - (2)^2] + 2*[16 - (3)^2)] + 3*[16 - (3)^2] 
+x = 1; f(x) = 15	+ 4*[16 - (4)^2]
+x = 2; f(x) = 12	R = 15 + 13 + 7 + 0
+x = 3; f(x) = 7		R = 35
+x = 4; f(x) = 0		
+	
+
+
+
+
+
+
+
+
+
+
+
+ 

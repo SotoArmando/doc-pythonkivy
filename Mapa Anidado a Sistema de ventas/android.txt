@@ -1,0 +1,3 @@
+title=SINNOMBRE
+author=Armando Jose Soto Melo
+orientation=portrait

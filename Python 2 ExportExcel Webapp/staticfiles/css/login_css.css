@@ -1,0 +1,48 @@
+body{
+	background-color:#B6AA9A;
+}
+
+#LogBox{
+	margin-top: 50px;	
+}
+
+.MyPanel, #SignUpFormat{
+	border:none;
+}
+
+.MyPanel-Title{
+	font-weight: bold;
+	font-size: 20px;
+	color: white;
+	font-family: Arial;
+}
+
+.MyPanel-Title{
+	padding-top: 10px;
+}
+
+#login-alert, #signupalert{
+	display:none;
+}
+
+.MyForm-Input{
+	margin-bottom: 25px;
+}
+
+#LoginButton{
+	margin-top: 10px;
+}
+
+#SignUpButton{
+	border-top: 1px solid#888; 
+	padding-top: 15px;
+}
+
+#signupbox{
+	display: none; 
+	margin-top: 50px;
+}
+
+#SignUpPanel-Heading, #LogInPanel-Heading{
+	background-color: rgb(51, 51, 51);
+}

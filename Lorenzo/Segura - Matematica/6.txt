@@ -1,0 +1,116 @@
+
+
+	Integrales de funciones simetricas
+		Primera ley:
+
+		si f es par:				f(-x) = f(x)
+		y f es continua sobre el intervalo 	(-a,a)		Entoncs:
+
+		I'(-a,a) f(x)*dx = 2* I'(a,-a)f(x)*dx
+		
+		Segunda Ley: 
+
+		si f es impar:				f(-x) = -f(x)
+		y f es continua sobre el invervalo:	(-a,a)		Entoncs:
+		
+		I'(a,-a) f(x)*dx = 0
+	
+		
+	Calcular la siguiente integral definida
+	
+		I'(-Pi/3, Pi/3) sen4x*dx
+	=	0
+
+	Ya que f(x) = sen 4x es impar en [-Pi/3 , Pi/3]		
+	----------------------------------------------------------------------------------
+	
+	La funcion logaritmica natural y la integracion.
+	
+		sea una funcion derivable con respecto a x, entoncs:
+
+		A) I' 1/x *dx = Ln'|x| + C           ; donde x > 0
+		B) I' 				     ; donde u > 0	
+	
+	Ejemplo:
+
+		Resolver las siguientes integrales:
+		(a,b) = (0,2)
+	1) 	I' 5 /4x-3 *dx		u = 4x - 3 
+	=	I' 5 /u *du /4		du /dx = 4
+	=	5/4 * I' 1/u * du	du /4  = dx
+	= 	5/4 * |u| + C
+	= 	5/4 * |4x - 3| + C
+
+	2) 	I' x^2-2 /x+1 *dx
+	=	I' [x-1 + (-1)/x+1] *dx
+	=	I' [x]*dx	+ I' [-1]*dx 	+ I' [(-1)/x+1]*dx
+	=	x^2/x - x - Ln'|x+1| 					donde (a,b) = (0,2)
+	=	
+
+
+
+
+	La funcion exponencial natural y la integracion:
+		Sea una funcion derivable con respecto a x entoncs:
+
+		I'e^x dx = e^x + C
+		I'e^u du = e^u + C
+		
+
+	Ejemplos:
+
+	1)	I'e^5x dx		u = 5x
+	=	I'e^u *-du/5		du/dx = -5
+	=	-1/5 *I'e^u *du		du/5  =  dx
+	=	-1/5 *e^u + C
+	= 	-1/5 *e^5x + C
+
+	2)	I'x * e^-x^2 * dx	donde (a, b) = (0, 1)
+	=	I'x * e^-x^2 * dx	u = -x^2
+	=	I'x * e^u * du/-2x	du/dx = -2x
+	=	1/-2 *I' e^u * du	du/-2x = dx	(a,b)
+	=	1/-2 *[e^-1 - e^0]	
+	=	1/-2 *[1/e  - 1]
+
+
+	9 al 35
+	417.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

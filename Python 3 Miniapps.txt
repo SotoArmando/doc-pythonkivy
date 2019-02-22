@@ -1,0 +1,3 @@
+Apps pequeñas que no requieren mucho esfuerzo pueden ocuparse de ser
+catalogos de comida en los restauranes, la idea es que puedas acceder a una miniapp
+usando un Hash Code.

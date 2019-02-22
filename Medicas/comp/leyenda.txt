@@ -1,0 +1,3 @@
+comp0 - Menu del fondo de 5 botones
+comp1 - Mapa Mapbox
+comp2 - Paquetes

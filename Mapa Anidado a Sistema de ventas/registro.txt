@@ -1,0 +1,5 @@
+
+lat:lon,1,Gomas Armando,ASSD11233,Armando,a,s,cc,dd,ss,ass
+lat:lon,1,Gomas Armando,ASSD11233,Armando,a,s,cc,dd,ss,ass
+lat:lon,1,Gomas Armando,ASSD11233,Armando,a,s,cc,dd,ss,ass
+lat:lon,1,Gomas Armando,ASSD11233,Armando,a,s,cc,dd,ss,ass

@@ -1,0 +1,2 @@
+Como se debe usar el mapa.
+Los usuarios se deben poder crear atravez de la aplicacion?

@@ -1,0 +1,47 @@
+Mobile
+añadir opcion para seleccionar (lat, lon) en Añadir Cliente, Ademas de Tipo de Comprobante(Valor Fiscal, Cliente Final, Excento, Gubernamental), Eliminar apellidos, y limitarse a Nombre (Nombre Completo), Agregar Provincia
+waze sdk para posicion del mapa
+google maps...
+opcion para seleccionar 3 precios
+automatizar datos de cliente en cuenta por cobrar
+enviar al correo del cliente formateado.
+Añadido al ITBIS de 1.18(Divide el monto entre 1.18 para el subtotal +  el itbis multiplicar el subtotal por 1.18 y sumarselo para el total general)(crear un gmail)
+	-kgarcia@ragtireautocenter.com
+	-creyes@ragtireautocenter.com
+	-conctactenos@ragtireautocenter.com
+(Opcional) enviar el correo al cliente [Chechbox]
+Marcar La Ruta que de debe seguir el chofer().
+Por confirmacion se debe notificar la entrega de la mercansia.()
+Subir informacion en excel.(Clientes y Cuentas por Cobrar)
+
+Lista de Provincias.()
+
+Dentro de la tabla de clientes crear campo para Vendedores(Crear Vendedores por el excel)
+Atravez de la Ventana de Cuentas por cobrar, se debe poder realizar un recibo(provisional o definitivo).
+	
+	-Seleccionando la factura.
+	DEFINITIVO(RECIBO DE INGRESO)
+	-El Recibo debe de tener estos campos: Fecha, Cliente, Valor(monto pagando por el cliente), Forma de Pago(Efectivo y Cheque),Tipo de Recibo(Cuenta por Cobrar, al pagar el 100%) (Avanze <99%)
+			CUANDO ES CHEQUE
+				 Nombre del Banco, No. Cheque, De Fecha
+
+				 
+
+	PROVISIONAL(RECIBO DE INGRESO PROVISIONAL)
+	-El Recibo debe de tener estos campos: Fecha, Cliente, Valor(monto pagando por el cliente), Forma de Pago(Efectivo y Cheque),Tipo de Recibo(Cuenta por Cobrar, al pagar el 100%) (Avanze <99%)
+			CUANDO ES CHEQUE
+				 Nombre del Banco, No. Cheque, De Fecha
+	
+Filtrar Clientes por provincia o sector.
+---------------------------------------------------------------------------------------------------------------------
+Desktop
+- Notificar cuando se crea un cliente, se crea una orden de pedido(cuenta), se crea un recibo
+- Numero - Orden - Fecha - Hora - Vendedor - Cliente  
+- Atravez de la app de escritorio se debe confirmar la cuenta. 
+	-Enviando un mensaje para los choferes que puede ser confirmado o denegado.
+		(En Caso de que todos deniegen el pedido, debe poder seleccionar uno para el envio)
+
+	-Objeto - Cantidad - Precio
+Cliente - Vendedor Relacion.
+
+

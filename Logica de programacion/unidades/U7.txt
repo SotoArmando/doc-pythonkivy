@@ -1,0 +1,67 @@
+﻿
+['t','PROGRAMA DE PRUEBA']
+['p','Es un programa que sirve para evaluar un sistema ya sea manual o automático, y verificar que este satisface los requisitos o identifica diferencias entre lo esperados y los resultados actuales.']
+
+
+['t','FUNDAMENTOS DE LAS PRUEBAS DE SOFTWARE ']
+['p','A todas las pruebas se les debería poder hacer un seguimiento hasta los requisitos de los clientes (trazabilidad). ']
+['p','Las pruebas deberían planificarse antes de que empiecen.']
+['p',' El principio de Pareto es aplicable a la prueba del software (“dondehay un defecto, hay otros”). ']
+['p',' Las pruebas deberían empezar por “lo pequeño” y progresar hacia “lo grande”. ']
+['p',' No son posibles las pruebas exhaustivas. ']
+['p','Para ser más efectivas, las pruebas deberían ser conducidas por un equipo independiente. ']
+['p',' Se deben evitar los casosde prueba no documentados nidiseñados con cuidado. ']
+['p','No deben realizarse planes de prueba suponiendo que prácticamente no hay defectos en los programas y, por tanto, dedicando pocos recursos a las pruebas.']
+
+
+
+
+['t','PROGRAMA O APLICACIÓN PRINCIPAL']
+['p','Este controla la ejecución del programa dirigiendo las llamadas a otras funciones. ']
+['t','Características:']
+['p','Un programa principal o main debe ser el primero en ejecutarse. ']
+['p',' Cuando main llama a otra función, pasa el control de la ejecución a la función, de modo que la ejecución comienza en la primera instrucción de la función.']
+['p','Una función devuelve el control a main cuando se ejecuta una instrucción return o cuando se llega al final de la función.']
+
+
+['t','SUBRUTINA FUNCIÓN & PROCEDIMIENTO ']
+['p','Una subrutina es una porción de código que forma parte de un programa más grande. ']
+['p',' Esa porción de código realiza una tarea específica, relativamente independiente del resto del código. ']
+['p','La mayoría de los lenguajes de programación soportan la creación de subrutinas y métodos para llamarlas (invocarlas) y retornarlas.']
+
+
+
+['t','VENTAJAS DE "ROMPER" UN PROGRAMA EN SUBRUTINAS']
+['p','Reducción de código duplicado.']
+['p','Permite el reuso de código en múltiples programas.']
+['p','Descomposición de problemas complejos en simples piezas (lo que aumenta la mantenibilidad y extensibilidad).']
+['p','Aumenta la legibilidad del código de un programa.']
+
+['t','PARÁMETRO: VALOR & REFERENCIA']
+['p','Cuando un programa llama a una función, la información se comunica a través de una lista de parámetros o argumentos. ']
+['p','La forma más común para realizar este paso de información es utilizando una correspondencia posicional, es decir, que los valores de los parámetros se asignan en el mismo orden en que se pasan.']
+
+
+['t','PARÁMETRO: VALOR & REFERENCIA']
+['p','Al pasar una variable a una funcion mediante valor lo que se hace es pasar unacopiade la informacion contenida en esa variable por lo que tendremos dos instancias diferentes de la misma variable, una que esta en el medio en el que se envio y otra que esta en el medio donde fue enviada, asi si se modifica la informacion de la variable enviada esta solo sera cambiada en ese ambiente.']
+['p','Al pasar una variable a una funcion por referencia lo que hacemos en realidad es pasar un apuntadora la direccion en memoria en la que se localiza la variable en si, por lo que al modicar la informacion mediante el apuntador en el metodo al que fue enviada esta sera modificada en todos los ambitos ya que en realidad modificamos la variable original, de hecho la unica ya que mediante esta forma no se hace otra copia de la variable.']
+
+
+
+['t','ÁMBITO: GLOBAL & LOCAL']
+['p','Ámbito: es la zona en que la declaración de cada identificador tiene efecto.']
+['p','Dentro del ámbito existen zonas en las que el identificador es visible, es decir, puede ser utilizado para designar a la misma entidad sin necesidad de un cualificador. ']
+['p','En la práctica ocurre que cada identificador solo es visible en algunas regiones de su ámbito.']
+['p','Normalmente se les reconoce como de ámbito: GLOBAL y LOCAL']
+
+
+['t','AMBITOS']
+['p','LOCAL']
+['p','Un indenficicador de alcancel local es aquel cuyo ámbito se restringe a la sección que la ha declarado, se dice entonces que es local dentro de esa sección.']
+['p','Esto implica que sólo va a poder ser manipulada en dicha sección, y no se podrá hacer referencia fuera de dicha sección.  ']
+['p','GLOBAL ']
+['p','Es el que se define fuera del cuerpo de cualquier función, normalmente al principio del programa, después de la definición de los archivos de biblioteca (#include o import o using), de la definición de constantes simbólicas y antes de cualquier función. ']
+['p','Es el que se define fuera del cuerpo de cualquier función, normalmente al principio del programa, después de la definición de los archivos de biblioteca (#include o import o using), de la definición de constantes simbólicas y antes de cualquier función. ']
+['p','Cualquier función puede acceder a dichas variables para leer y escribir en ellas. Es decir, se puede hacer referencia a su dirección de memoria en cualquier parde del programa.']
+['p','']
+['p','']

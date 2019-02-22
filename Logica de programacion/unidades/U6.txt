@@ -1,0 +1,31 @@
+['t','Compilacion (Programacion): ']
+['p','Es el proceso por el cual se traducen las instrucciones escritas en un determinado lenguaje de programación a lenguaje máquina. •']
+['p','Se trata del proceso de traducción de programas de código fuente a código objeto. ']
+['p','Además de un traductor, se pueden necesitar otros programas para crear de un programa objeto a uno ejecutable.']
+['i','prac61']
+
+['t','PRUEBA/DEPURACIÓN']
+['p','El proceso de pruebasuele desvelar bugs (o errores), un término genérico que abarca todo lo que hace su programa que no se esperaba que hiciese. ']
+['p','El proceso de suprimir estos errores del programa se conoce comodepuración.']
+['p','Las prácticas de codificación y diseño le ayudan a crear programas de calidad y deben ir seguidas de pruebasexhaustivas de los programas.']
+
+['t','DOCUMENTACIÓN']
+['p','La documentación del sistema de información es un elemento fundamental, porque proporciona entendimiento a quien lo vaya a usar para mantenerlo, base para auditorias y para enseñar a los usuarios que hace, como lo hace y como interactuar con él, y a los operadores y administradores como hacerlo funcionar.']
+['p','La tarea de documentar los sistemas y ponerlos por escrito para la posteridad muchas veces se olvida entre tanta euforia y estrés del trabajo. Se deja para el mañana que nunca llega.']
+['p','La elaboración de la documentación no debe ser un fin en sí, sino una actividad que añada valor.']
+
+['t','BENEFICIOS DE LA DOCUMENTACIÓN']
+['p','Constituye el respaldo formal del sistema.']
+['p','Facilita el conocimiento, interpretación y comprensión del sistema.']
+['p','Provee los antecedentes que permiten conocer como se ha diseñado, que hace y como está operando, que procesos apoya y a quienes brinda información.']
+['p','Sirve de base para auditorias y control interno del sistema.']
+['p','Elimina los riesgos de dependencia con respecto al personal.']
+['p','Es un elemento fundamental de capacitación para los usuarios del sistema y facilita la comunicación.']
+['p','Provee antecedentes esenciales, concretos y permanentes para evaluar modificaciones a su funcionamiento y/o para decidir la sustitución de los mismos.']
+['p','Aumenta la seguridad y eficiencia en el mantenimiento de los sistemas y reduce su costo.']
+['p','Es un elemento integrador que permite la apreciación unitaria y conjunta del sistema.']
+
+['t','DISTRIBUCIÓN']
+['p','Se refiere a la entrega, instalación y pruebas de un  sistema, para ponerlo en estado de operación.']
+
+

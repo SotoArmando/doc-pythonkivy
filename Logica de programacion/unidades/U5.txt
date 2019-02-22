@@ -1,0 +1,7 @@
+﻿['i','practica 5 1']
+['i','practica 5 2']
+['i','practica 5 3']
+['i','practica 5 4']
+['i','practica 5 5']
+['t','Problemas de Programación:']
+['p','La resolución de un problema mediante un ordenador consiste en el proceso que a partir de la descripción de un problema, expresado habitualmente en lenguaje natural y en términos propios del dominio del problema, permite desarrollar un algoritmo/programa que resuelva dicho problema.']

@@ -1,0 +1,223 @@
+Continuacion ...
+
+Los puntos extremos izquierdos:
+
+cuando se usan los extremoz izquierdo al graficar la
+suma de rimas, el resultado es diferente: en la grafica
+el area queda sobre-expuesta y la aproximacion sobre-
+valorada.
+
+	L4 = (1)*[16 - (0)^2] + (1)*[16 - (1)^2] +
+      	     (1)*[16 - (2)^2] + (1)*[16 - (1)^2]
+	L4 = 16 + 15 +12 + 7
+	L4 = 50
+
+Una vez tenemos las 2 estimaciones: resultados de los extremos (izquierdo y derecho):
+podemos asumir que el area es: 
+				34 < A < 50
+----------------------------------------------------------------------------------------
+	
+	Definicion de Area:
+
+		d' = Delta 
+		v' = Vector				
+		El Area de la region, que se encuentra bajo la grafica, de una
+		funcion continua f, es el limite de la suma de las areas de los
+		rectangulos de aproximacion.
+
+		A = Lim(n -> inf)[f(X1)*d'x + ... + f(Xn)*d'x]
+
+		d'x = b - a /n
+		v'X'd = a + (i)(d'x)
+
+
+	Ejemplo:
+
+		Use la definincion de area para determinar el area exacta bajo la
+		grafica en el ejercicio anterior.
+
+		f(x) = 16 - x^2 , x = 0 hasta x = 4 ,
+		
+
+	Solucion:
+		S' = Sumatoria
+		a = 0
+		b = 4
+		d'x = b - a /n 
+		    = 4 - 0 /n 
+		    = 4/n
+		v'X'd = a + (i * d'x) 
+		      = 0 + (i * 4/n)
+		      = 4i/n
+		
+		A = Lim(n -> inf) [ S'(1,n)[f(v'X'd) * d'x ]
+		  = Lim(n -> inf) [ 16 - (4i/n)^2 ] * (4/n)
+		  = Lim(n -> inf) [ 16 - (16i^2 /n^2)] * (4/n)
+		  = Lim(n -> inf) [ 64/n - 64i^2/n^3 ]
+		  = Lim(n -> inf) [ S'[ 64/n ] - S'[ 64i^2/n^3 ] ]
+		  = Lim(n -> inf) [ 64/n S'[ 1 ] - 64/n^3 S'[ i^2 ] ]
+		  = Lim(n -> inf) [ 64/n * n - 64/n^3 * n(n+1)(2n+1) /6 ]
+		  = Lim(n -> inf) [ 64 - 32/4 * (n+1)(2n+1) /n^2 ]
+		  = Lim(n -> inf) [ 64 - 32/4 * (n+1)/n^2 * (2n+1)/n^2]
+		  = Lim(n -> inf) [ 64 - 32/4 * (1 + 1^n/n) * (2 + 1/n) ]
+		  = Lim(n -> inf) [ 64 - 32/4 * (1 + 1^n/n) * (2 + 1^n/n) ]
+		  = Lim(n -> inf) [ 64 - 32/3 * 1 * 2 ]
+		  = 64 - 64/3
+		A = 128/3 = 42.3
+
+
+
+		En el tema anterior usamos el limite de una suma para determinar el area
+		de una region plana. esta no es la unica utilidad de los limites de sumas
+		se puede usar un procedimiento similar para determinar cantidades tan distintas
+		como: Longitud de Arco, Valor Promedio, Volumen, Trabajo, Areas Superficiales, etc.
+
+		Supongamos que una funcion f, esta definida en un intervalo [a,b] "cerrado", pero
+		no es necesariamente continua en dicho intervalo. sea d' una particion arbitraria
+		del intervalo a =, y sea d'x la longitud del i'esimo subintervalo; ademas sea Xi
+		cualquier punto en dicho sub intervalo, entonces la suma  S'[ f(Xi) = D'xi] se conoce 
+		como "Suma de Riman".
+
+		Ejemplo:	Evalue la Suma de Riman para la funcion, f(x) = x^3 + 6x
+				tomando como puntos de muestra los puntos extremos de la derecha y
+				los datos siguientes.
+				
+				a = 0, b = 3, n = 6
+				d'x = b - a /n
+				    = 3/6
+				    = 1/2
+				
+				(6 partes)
+
+			        0      0.5      1      1.5     2.5      3
+				|-------|-------|---0---|-------|-------|
+			        f(x/1)  f(x/2)  f(x/3)  f(x/4)  f(x/5)  f(x/6)
+
+				R6 = S' [ f(v'Xi ] * d'x
+				R6 = 0.5 * [f(0) + f(0.5) + f(1) + f(1.5) + f(2.5) + f(3)]
+				R6 = 0.5 * [3.125 + 7 + 12.375 + 20 + 30.625 + 45]
+				R6 = 54.0625 
+
+
+		Para una particion dada llamada delta, llamamos norma dada de la particion
+		a la longitud del subintervalo mas largo y lo simbolisamos como:
+
+							|| d'||
+
+		
+		si cada sub intervalo es de igual longitud decimos que la particion es regular
+		y simbolisamos la norma por:
+
+						|| d'|| = d'x = b - a/n
+						  -Particion Regular-
+
+		En una particion general la normal esta relacionada con el numero de subintervalos
+		(n) de a, b cerrado en la forma siguiente.
+
+						  b - a /|| d'|| <= n
+						
+		Definicion de integral definida.
+
+			Si una funcion f(x) esta definida en el intervalo (a,b) "cerrado", y el limite
+			de la suma de riman existe, entoncs decimos que f(x) es integrable sobre (a,b)
+			"cerrado" y simbolisamos este limite por:
+								(b
+			Lim(|| d'|| -> 0) S'[ f(v'xi)*d'xi ] =  |  f(x) dx
+								)a  
+			Llamamos integral definida de f(x) entre a y b, a este Limite.
+
+			El numero a es el limite inferior de integracion.
+			El numero b es el limite superior de integracion.
+
+			Una integral indefinida es una familia de funciones.
+			Una integral definida es un numero real.
+
+
+
+		Ejemplo:
+
+			Calcular la siguiente integral definida.
+			
+				(5  		
+				|  4x dx
+				)2 		
+						[a, b] = [2, 5]
+		
+			una condicion suficiente para que una funcion f(x), sea
+			integrable, es que dicha funcion sea continua en ese intervalo.
+
+
+				f(x) = 4x
+
+
+			Solucion:
+				
+				
+				
+
+			
+
+			
+					
+
+
+
+
+
+
+
+
+
+
+
+					
+				
+
+
+				
+				
+				
+				
+				
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+		
+		
+		
+ 

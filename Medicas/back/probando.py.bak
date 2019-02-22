@@ -1,0 +1,23 @@
+
+
+class Asistente():
+    Response = None
+    def __init__(self,**kwargs):
+        from suds.client import Client
+        url="http://invetco.dyndns.org:7001/ProveedorWS/ImplXmlMessageAprobationService?wsdl"
+        client = Client(url)
+        print client 
+
+
+        token = client.service.GenerarTokenTr("ASOTO","8493532487")
+        print "Acceso obtenido token .: ",token
+
+    def execute(self):
+        x = client.service.ConsultarData("10.0.0.214","db_eRX","asoto","$a40227587850","exec SP_Clientes",token)
+
+        import xml.dom.minidom
+
+        xml = xml.dom.minidom.parseString(x) 
+        pretty_xml_as_string = xml.toprettyxml()
+        print pretty_xml_as_string
+

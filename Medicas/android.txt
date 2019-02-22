@@ -1,0 +1,3 @@
+title=Testin
+author=Armando
+orientation=portrait
